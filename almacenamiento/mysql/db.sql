@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS consultas_medicas (
     id_consulta INT AUTO_INCREMENT PRIMARY KEY,
     id_medico_fk INT NOT NULL,
     id_paciente_fk INT NOT NULL,
-    fecha_consulta DATE NOT NULL,
+    fecha_consulta TIMESTAMP NOT NULL,
     estado_consulta ENUM('pendiente', 'completada', 'cancelada') NOT NULL,
     diagnostico VARCHAR(500) NOT NULL,
     motivo VARCHAR(1000) NOT NULL,
