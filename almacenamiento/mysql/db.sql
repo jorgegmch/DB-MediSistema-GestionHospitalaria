@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS medicos (
 CREATE TABLE IF NOT EXISTS pacientes (
     id_pacientes INT AUTO_INCREMENT PRIMARY KEY,
     nombre_paciente VARCHAR(100) NOT NULL,
-    apellido_paciente VARCHAR(100) NOT NULL
+    apellido_paciente VARCHAR(100) NOT NULL,
     documento_identidad VARCHAR(20) NOT NULL,
     fecha_nacimiento DATE NOT NULL
 );
