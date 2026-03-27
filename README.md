@@ -120,3 +120,4 @@ Cada consulta incluye:
 ## 📚 Autor
 
 Proyecto desarrollado por [Jorge Gomez](https://github.com/jorgegmch) como parte del proceso de formación en bases de datos y desarrollo backend.
+
