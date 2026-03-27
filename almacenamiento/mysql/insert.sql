@@ -14,17 +14,17 @@ INSERT INTO medicos (nombre, apellido, fecha_contratacion, años_experiencia) VA
 ('Ana', 'Martínez', '2018-11-01', 5),
 ('Luis', 'Rodríguez', '2020-01-25', 3);
 
-INSERT INTO pacientes (nombre_paciente, apellido_paciente) VALUES
-('Sofía', 'García'),
-('Mateo', 'Fernández'),
-('Valentina', 'Sánchez'),
-('Diego', 'Ramírez'),
-('Camila', 'Torres'),
-('Lucas', 'Flores'),
-('Isabella', 'Gómez'),
-('Matías', 'Díaz'),
-('Emma', 'Vargas'),
-('Santiago', 'Mendoza');
+INSERT INTO pacientes (nombre_paciente, apellido_paciente, documento_identidad, fecha_nacimiento) VALUES
+('Sofía', 'García', '12345678A', '1990-04-12'),
+('Mateo', 'Fernández', '87654321B', '1985-09-30'),
+('Valentina', 'López', '11223344C', '2000-01-20'),
+('Diego', 'Martínez', '44332211D', '1995-07-15'),
+('Camila', 'Rodríguez', '55667788E', '1988-12-05'),
+('Lucas', 'Sánchez', '99887766F', '1992-03-25'),
+('Isabella', 'Gómez', '66778899G', '1998-06-18'),
+('Santiago', 'Pérez', '33445566H', '1983-11-10'),
+('Valeria', 'Fernández', '77889900I', '1995-02-28'),
+('Matías', 'López', '22334455J', '2002-08-05');
 
 INSERT INTO especialidades (id_medico_fk, id_espec_fk) VALUES
 (1, 1), -- Juan Pérez - Pediatría
