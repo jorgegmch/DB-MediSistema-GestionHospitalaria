@@ -4,8 +4,6 @@
 
 Este proyecto consiste en el diseño de una base de datos relacional para el centro de salud **MediSistema**. El objetivo principal es gestionar de manera eficiente la información de médicos, especialidades, pacientes y consultas médicas, garantizando la integridad de los datos y aplicando principios de normalización.
 
-Este taller sirve como preparación para el reto académico **"Biblioteca Campus"**, enfocándose en el análisis, modelado y consulta de datos.
-
 ---
 
 ## 🎯 Objetivos
