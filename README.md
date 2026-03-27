@@ -71,8 +71,8 @@ Contiene la definición de la base de datos (DDL):
 
 ### 📊 `insert.sql`
 Contiene datos de prueba (DML):
-- Inserción de médicos, pacientes, especialidades y consultas
-- Generado con apoyo de Inteligencia Artificial (solo permitido en este taller)
+- Inserción de médicos, pacientes, especialidades y consultas.
+- Generado con apoyo de Inteligencia Artificial.
 
 ---
 
