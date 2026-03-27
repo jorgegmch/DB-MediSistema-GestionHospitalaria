@@ -12,7 +12,6 @@ Este proyecto consiste en el diseño de una base de datos relacional para el cen
 - Representar entidades, atributos, claves primarias (PK) y foráneas (FK).
 - Implementar la estructura de la base de datos en MySQL.
 - Resolver consultas SQL de diferentes niveles (básico a intermedio).
-- Utilizar GitHub como sistema de control de versiones.
 
 ---
 
@@ -20,18 +19,18 @@ Este proyecto consiste en el diseño de una base de datos relacional para el cen
 
 El sistema está compuesto por las siguientes entidades principales:
 
-- **Medicos**
-- **Especialidades**
-- **Medico_Especialidad** (tabla intermedia)
-- **Pacientes**
-- **Consultas**
+- **medicos**
+- **especialidades**
+- **medico_especialidad** (tabla intermedia)
+- **pacientes**
+- **consultas_medicas**
 
 ### 🔗 Relaciones
 
 - Un médico puede tener múltiples especialidades (**relación muchos a muchos**).
 - Un paciente puede tener múltiples consultas (**1:N**).
 - Un médico puede atender múltiples consultas (**1:N**).
-- La tabla `consultas` actúa como puente entre médicos y pacientes.
+- La tabla `consultas_medicas` actúa como puente entre médicos y pacientes.
 
 ---
 
