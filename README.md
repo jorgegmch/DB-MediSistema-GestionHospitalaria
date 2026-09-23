@@ -45,6 +45,7 @@ Designed in **StarUML**.
 ```
 medisistema-hospital-db/
 ├── README.md
+├── LICENSE
 ├── .gitignore
 ├── diagrams/
 │   └── medisistema_logical_diagram.png
