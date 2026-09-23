@@ -1,13 +1,13 @@
 USE db_medisistema;
 
-INSERT INTO medico_especialidad (nombre_espec) VALUES
+INSERT INTO especialidades (nombre_espec) VALUES
 ('Pediatría'),
 ('Cardiología'),
 ('Dermatología'),
 ('Neurología'),
 ('Medicina General');
 
-INSERT INTO medicos (nombre, apellido, fecha_contratacion, años_experiencia) VALUES
+INSERT INTO medicos (nombre, apellido, fecha_contratacion, anios_experiencia) VALUES
 ('Juan', 'Pérez', '2010-05-15', 14),
 ('María', 'Gómez', '2012-08-20', 12),
 ('Carlos', 'López', '2015-03-10', 9),
@@ -26,7 +26,7 @@ INSERT INTO pacientes (nombre_paciente, apellido_paciente, documento_identidad, 
 ('Valeria', 'Fernández', '77889900I', '1995-02-28'),
 ('Matías', 'López', '22334455J', '2002-08-05');
 
-INSERT INTO especialidades (id_medico_fk, id_espec_fk) VALUES
+INSERT INTO medico_especialidad (id_medico_fk, id_espec_fk) VALUES
 (1, 1), -- Juan Pérez - Pediatría
 (2, 2), -- María Gómez - Cardiología
 (3, 3), -- Carlos López - Dermatología

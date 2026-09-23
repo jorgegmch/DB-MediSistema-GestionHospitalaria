@@ -1,30 +1,30 @@
 USE db_medisistema;
 
 -- 1. Listar todos los médicos con su especialidad (utilizando tabla intermedia).
-SELECT m.nombre, m.apellido, me.nombre_espec
+SELECT m.nombre, m.apellido, esp.nombre_espec
 FROM medicos AS m
-JOIN especialidades AS e ON m.id_medico = e.id_medico_fk
-JOIN medico_especialidad AS me ON e.id_espec_fk = me.id_espec;
+JOIN medico_especialidad AS me ON m.id_medico = me.id_medico_fk
+JOIN especialidades AS esp ON me.id_espec_fk = esp.id_espec;
 
 -- 2. Buscar médicos que cuenten con la especialidad de "Pediatría".
 SELECT m.nombre, m.apellido
 FROM medicos AS m
-JOIN especialidades AS e ON m.id_medico = e.id_medico_fk
-JOIN medico_especialidad AS me ON e.id_espec_fk = me.id_espec
-WHERE me.nombre_espec = 'Pediatría';
+JOIN medico_especialidad AS me ON m.id_medico = me.id_medico_fk
+JOIN especialidades AS esp ON me.id_espec_fk = esp.id_espec
+WHERE esp.nombre_espec = 'Pediatría';
 
 -- 3. Contar el total de médicos registrados en la institución.
 SELECT COUNT(*) AS total_medicos 
 FROM medicos;
 
 -- 4. Obtener los médicos que tienen más de 15 años de experiencia profesional.
-SELECT nombre, apellido, años_experiencia
+SELECT nombre, apellido, anios_experiencia
 FROM medicos
-WHERE años_experiencia > 15;
+WHERE anios_experiencia > 15;
 
 -- 5. Listar las especialidades únicas que ofrece el centro médico.
 SELECT DISTINCT nombre_espec
-FROM medico_especialidad;
+FROM especialidades;
 
 -- 6. Mostrar todos los pacientes registrados en orden alfabético por apellido.
 SELECT *
@@ -72,10 +72,10 @@ FROM consultas_medicas
 GROUP BY id_medico_fk;
 
 -- 14. Listar las especialidades que actualmente no tienen ningún médico asignado.
-SELECT me.nombre_espec
-FROM medico_especialidad AS me
-LEFT JOIN especialidades AS e ON me.id_espec = e.id_espec_fk
-WHERE e.id_espec_fk IS NULL;
+SELECT esp.nombre_espec
+FROM especialidades AS esp
+LEFT JOIN medico_especialidad AS me ON esp.id_espec = me.id_espec_fk
+WHERE me.id_espec_fk IS NULL;
 
 -- 15. Filtrar los pacientes que tienen citas en estado "Cancelada".
 SELECT p.nombre_paciente, p.apellido_paciente, p.documento_identidad
@@ -97,11 +97,11 @@ FROM pacientes
 WHERE TIMESTAMPDIFF(YEAR, fecha_nacimiento, CURDATE()) > 50;
 
 -- 18. Contar la cantidad de consultas realizadas desglosadas por cada especialidad.
-SELECT me.nombre_espec, COUNT(*) AS total_consultas
-FROM medico_especialidad AS me
-JOIN especialidades AS e ON me.id_espec = e.id_espec_fk
-JOIN consultas_medicas AS cm ON e.id_espec_fk = cm.id_espec_fk
-GROUP BY me.nombre_espec;
+SELECT esp.nombre_espec, COUNT(*) AS total_consultas
+FROM especialidades AS esp
+JOIN medico_especialidad AS me ON esp.id_espec = me.id_espec_fk
+JOIN consultas_medicas AS cm ON me.id_medico_fk = cm.id_medico_fk
+GROUP BY esp.nombre_espec;
 
 -- 19. Determinar el motivo de consulta que más se ha repetido en el último semestre.
 SELECT motivo, COUNT(*) AS frecuencia

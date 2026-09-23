@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS db_medisistema;
+CREATE DATABASE IF NOT EXISTS db_medisistema
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_spanish_ci;
 
 USE db_medisistema;
 
@@ -7,7 +9,7 @@ CREATE TABLE IF NOT EXISTS medicos (
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     fecha_contratacion DATE NOT NULL,
-    años_experiencia INT NOT NULL
+    anios_experiencia INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS pacientes (
@@ -30,15 +32,15 @@ CREATE TABLE IF NOT EXISTS consultas_medicas (
     FOREIGN KEY (id_paciente_fk) REFERENCES pacientes(id_pacientes)
 );
 
-CREATE TABLE IF NOT EXISTS medico_especialidad (
+CREATE TABLE IF NOT EXISTS especialidades (
     id_espec INT AUTO_INCREMENT PRIMARY KEY,
     nombre_espec VARCHAR(300) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS especialidades (
+CREATE TABLE IF NOT EXISTS medico_especialidad (
     id_medico_fk INT NOT NULL,
     id_espec_fk INT NOT NULL,
     PRIMARY KEY (id_medico_fk, id_espec_fk),
     FOREIGN KEY (id_medico_fk) REFERENCES medicos(id_medico),
-    FOREIGN KEY (id_espec_fk) REFERENCES medico_especialidad(id_espec)
+    FOREIGN KEY (id_espec_fk) REFERENCES especialidades(id_espec)
 );
