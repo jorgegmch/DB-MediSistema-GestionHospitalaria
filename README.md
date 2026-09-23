@@ -1,123 +1,81 @@
-# 🏥 MediSistema – Gestión Hospitalaria
+# MediSistema — Hospital Management Database
 
-## 📌 Descripción del Proyecto
+A normalized relational database design for a hospital management system, modeling doctors, specialties, patients, and medical consultations with full referential integrity.
 
-Este proyecto consiste en el diseño de una base de datos relacional para el centro de salud **MediSistema**. El objetivo principal es gestionar de manera eficiente la información de médicos, especialidades, pacientes y consultas médicas, garantizando la integridad de los datos y aplicando principios de normalización.
+## Overview
 
----
+This project defines the relational schema, seed data, and query layer for **MediSistema**, a fictional hospital's data management system. It focuses on:
 
-## 🎯 Objetivos
+- A relational model designed to avoid redundant data.
+- Primary and foreign key constraints enforcing referential integrity.
+- A dedicated junction table resolving the many-to-many relationship between doctors and specialties.
+- A set of 20 SQL queries covering filtering, joins, aggregation, and subqueries.
 
-- Diseñar un modelo relacional correcto y normalizado.
-- Representar entidades, atributos, claves primarias (PK) y foráneas (FK).
-- Implementar la estructura de la base de datos en MySQL.
-- Resolver consultas SQL de diferentes niveles (básico a intermedio).
+## Data Model
 
----
+| Table | Role |
+|---|---|
+| `medicos` | Doctors |
+| `pacientes` | Patients |
+| `consultas_medicas` | Medical consultations (links a doctor and a patient) |
+| `especialidades` | Catalog of medical specialties |
+| `medico_especialidad` | Junction table resolving the many-to-many relationship between doctors and specialties |
 
-## 🧱 Modelo de Datos
+### Relationships
 
-El sistema está compuesto por las siguientes entidades principales:
+- A doctor can have multiple specialties, and a specialty can be held by multiple doctors (**many-to-many**, via `medico_especialidad`).
+- A patient can have multiple consultations (**1:N**).
+- A doctor can attend multiple consultations (**1:N**).
 
-- **medicos**
-- **especialidades**
-- **medico_especialidad** (tabla intermedia)
-- **pacientes**
-- **consultas_medicas**
+## ER Diagram
 
-### 🔗 Relaciones
+![Logical diagram](diagrams/medisistema_logical_diagram.png)
 
-- Un médico puede tener múltiples especialidades (**relación muchos a muchos**).
-- Un paciente puede tener múltiples consultas (**1:N**).
-- Un médico puede atender múltiples consultas (**1:N**).
-- La tabla `consultas_medicas` actúa como puente entre médicos y pacientes.
+Designed in **StarUML**.
 
----
+## Tech Stack
 
-## 🛠️ Tecnologías Utilizadas
+- MySQL 8.0+
+- SQL (DDL / DML)
+- StarUML (ER diagram)
+- Git / GitHub
 
-- **StarUML** → Diseño del diagrama lógico  
-- **MySQL** → Gestión de base de datos  
-- **GitHub** → Control de versiones  
-- **SQL** → Definición y manipulación de datos  
+## Project Structure
 
----
-
-## 📁 Estructura del Proyecto
-
-```bash
-medisistema_taller/
+```
+medisistema-hospital-db/
 ├── README.md
-└── almacenamiento/
-   └── mysql/
-       ├── db.sql
-       ├── insert.sql
-       └── consultas.sql
-└── diagramas/
-    └── diagrama_logico.png
+├── .gitignore
+├── diagrams/
+│   └── medisistema_logical_diagram.png
+└── scripts/
+    ├── medisistema_schema.sql
+    ├── medisistema_seed.sql
+    └── medisistema_queries.sql
 ```
 
----
+## Files
 
-## 📄 Descripción de Archivos
+- **`scripts/medisistema_schema.sql`** — DDL: database creation with explicit `utf8mb4` / `utf8mb4_spanish_ci` charset, table definitions, primary and foreign keys.
+- **`scripts/medisistema_seed.sql`** — DML: sample (fictional) data for doctors, patients, specialties, and consultations.
+- **`scripts/medisistema_queries.sql`** — 20 solved queries, from basic filtering to aggregation and subqueries.
 
-### 🧩 `db.sql`
-Contiene la definición de la base de datos (DDL):
-- Creación de tablas
-- Definición de claves primarias y foráneas
-- Relaciones entre entidades
+## Getting Started
 
----
+Run the scripts against a MySQL 8.0+ server, in order:
 
-### 📊 `insert.sql`
-Contiene datos de prueba (DML):
-- Inserción de médicos, pacientes, especialidades y consultas.
-- Generado con apoyo de Inteligencia Artificial.
+```bash
+mysql -u <user> -p < scripts/medisistema_schema.sql
+mysql -u <user> -p < scripts/medisistema_seed.sql
+mysql -u <user> -p < scripts/medisistema_queries.sql
+```
 
----
+> Adjust this if you're running the scripts through a GUI client (DBeaver, MySQL Workbench) instead of the CLI.
 
-### 🔍 `consultas.sql`
-Incluye la solución a las 20 consultas propuestas:
-- Consultas básicas
-- Filtros y búsquedas
-- Agregaciones
-- Análisis de datos
+## License
 
-Cada consulta incluye:
-- Número
-- Enunciado
-- Código SQL
+This project is licensed under the MIT License.
 
 ---
 
-### 🧠 `diagrama_logico.png`
-- Representación visual del modelo relacional
-- Diseñado en **StarUML**
-- Incluye entidades, atributos y relaciones
-
-![Diagrama lógico](almacenamiento/diagramas/diagrama_logico.png)
-
----
-
-## 📌 Consideraciones Importantes
-
-- El modelo está diseñado siguiendo principios de **normalización**.
-- Se evita la redundancia de datos mediante el uso de claves foráneas.
-- Se implementa una tabla intermedia para relaciones muchos a muchos.
-- Se garantiza la integridad referencial en todas las relaciones.
-
----
-
-## 🚀 Cómo Ejecutar el Proyecto
-
-1. Crear una base de datos en MySQL.
-2. Ejecutar el archivo `db.sql`.
-3. Ejecutar el archivo `insert.sql` para poblar los datos.
-4. Ejecutar `consultas.sql` para validar las consultas.
-
----
-
-## 📚 Autor
-
-Proyecto desarrollado por [Jorge Gomez](https://github.com/jorgegmch) como parte del proceso de formación en bases de datos y desarrollo backend.
-
+Built by [Jorge Gomez](https://github.com/jorgegmch)
